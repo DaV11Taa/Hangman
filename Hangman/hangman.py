@@ -1,5 +1,4 @@
-from random import randint
-from tokenize import String # Do not delete this line
+from random import randint# Do not delete this line
 from hangmanWordBase import definitons
 
 def displayIntro():
@@ -66,7 +65,7 @@ def checkandreplace(Covered,trygess,letter):
     Covered = "".join(Ctrytogess_list)
     return Covered
 
-def play(trytogess:String):
+def play(trytogess):
     Ctrytogess = convent(trytogess)
     lives = 5
     letter = ''
