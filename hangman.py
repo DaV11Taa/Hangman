@@ -1,5 +1,7 @@
 from random import randint# Do not delete this line
-from hangmanWordBase import definitons
+from HangManWords.hangmanWordBase import definitons
+
+oldOne = ""
 
 def displayIntro():
     print("_______________________________________________\n _                                             \n| |                                            \n| |__   __ _ _ __   __ _ _ __ ___   __ _ _ __  \n| '_ \ / _` | '_ \ / _` | '_ ` _ \ / _` | '_ \ \n| | | | (_| | | | | (_| | | | | | | (_| | | | |\n|_| |_|\__,_|_| |_|\__, |_| |_| |_|\__,_|_| |_|\n                    __/ |                      \n                   |___/                       \n_______________________________________________")
@@ -27,16 +29,20 @@ def displayHangman(state):
         print(f"                 \n     ._______.   \n     |/          \n     |           \n     |           \n     |           \n     |           \n     |           \n ____|___        \n                 ")
 
 def getWord():
-    """
-    
-    NEED TO IMPROVE
-    
-    """
-    #file = open('hangman-words.txt', 'r')
-    file = open('wordlist.txt', 'r')
+    global oldOne
+    #file = open('./HangManWords/hangman-words.txt', 'r')
+    file = open('./HangManWords/wordlist.txt', 'r')
     worldlist = list(file.readlines())
     file.close()
-    return str(worldlist[randint(0,len(worldlist)-1)].replace('\n',''))
+    chosenWord = str(worldlist[randint(0,len(worldlist)-1)].replace('\n',''))
+    
+    #to change the word if it is the same as it was on the last turn.
+    while chosenWord == oldOne:
+        chosenWord = str(worldlist[randint(0,len(worldlist)-1)].replace('\n',''))
+
+    oldOne = chosenWord
+    return chosenWord
+
 
 def valid(c):
     if len(str(c)) > 1 or len(str(c)) == 0: 
@@ -94,10 +100,12 @@ def hangman():
         result = play(trytogess)
         displayEnd(result)
         choice = input('Do you want to play again? (yes/no)\n')
-        if choice == 'no':
-            break
-        elif choice == 'yes':
-            continue
+        while True :
+            if choice == 'no' or choice == 'not' or choice == 'n':
+                return
+            if choice == 'yes' or choice =='y':
+                break
+            choice = input('Do you want to play again? (yes/no)\n')
   
 if __name__ == "__main__":
     hangman()
