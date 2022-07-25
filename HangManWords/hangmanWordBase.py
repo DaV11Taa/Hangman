@@ -5,5 +5,5 @@ definitons = {
     "abandon": "Cease to support or look after (someone).",
     "ability": "Possession of the means or skill to do \nsomething.",
     "able": "having the power, skill, means, or \nopportunity to do something.",
-    "abortion": "The termination of a pregnancy after, \naccompanied by, resulting in, or closely followed by \nthe death of the embryo or fetus."
+    "abortion": "The termination of a pregnancy after, \naccompanied by, resulting in, or closely \nfollowed by the death of the embryo or fetus."
 }
